@@ -1,0 +1,18 @@
+8만 step때 
+
+
+epsilon=1.0,
+epsilon_min=0.1,
+gamma=0.8,
+gamma_max = 0.95,
+
+
+''' 
+epsilon 값이 계속 바뀜 -> 초반 decay값이 컷다가 점차적으로 STEP이 뒤로 갈 수록 epsilon decay값이 매우 작아짐.
+epsilon decay를 비교적 크게 줌으로써 후반에는 탐험보단 greedy한 학습을 많이 하도록 유도.
+'''
+self.epsilon_decay = (epsilon - epsilon_min) / 80000
+'''
+초기 보상에 중점을 두어 학습을 진행하다가 점차 후기 보상을 중점으로 학습을 유도.
+'''
+self.gamma_incre = (gamma_max - gamma) / 130000
